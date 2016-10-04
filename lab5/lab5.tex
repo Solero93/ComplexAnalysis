@@ -1,0 +1,136 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 5}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item Donat $r>0$ i $a\in\mathbb{C}$ calculeu
+$$I=\int_{|z-a|=r}\frac{e^{2z}}{(z-a)^{3}}dz$$
+\begin{framed}
+Sigui $f(z) = e^{2z}$.
+Apliquem la fórmula de Cauchy per derivades sobre $f$ en el domini $\mathbb{C}$. Tenim que $f(z)$ és una funció entera, per tant compleix totes les hipòtesis necessàries.
+$$f^{(2)}(a) \frac{2\pi i}{2!} = \int_{|z-a|=r}\frac{f(z)}{(z-a)^{2+1}}dz$$
+
+Sustituïm i obtenim que $I=e^{2a}2\pi i$
+\end{framed}
+\item Siguin $f,g\in\mathcal{H}(\Omega)$, on $\Omega$ és un connex tal que $\overline{\mathbb{D}}\subset \Omega$. Donat $a\in\mathbb{C}$ amb $|a|\neq 1$, calculeu
+$$\frac{1}{2\pi i}\int_{\partial\mathbb{D}}\left( \frac{f(\omega)}{\omega - a} - \frac{ag(\omega)}{a\omega - 1} d\omega\right) $$ 
+\begin{framed}
+Notem que com $|a|\neq 1$, les funcions dins les integrals estàn ben definides.
+Separem la integral en la resta de dues integrals, $A$ i $B$, que sabrem calcular més fàcilment:
+$$A=\frac{1}{2\pi i}\int_{\partial\mathbb{D}}\frac{f(\omega)}{\omega - a} d\omega$$
+$$B=\frac{1}{2\pi i}\int_{\partial\mathbb{D}}\frac{ag(\omega)}{a\omega - 1} d\omega$$
+
+Pel que m'han dit molts companys, tots han suposat que el conjunt és convex i fan servir la fórmula integral de Cauchy per oberts convexos, encara que el nostre conjunt és només connex. Jo faré el mateix ja que no he trobat cap altra manera de fer aquest exercici si no, ja que $a$ pot no ser d'$\Omega$ i no tinc cap altra eina per determinar l'integral si no.
+
+Com $|a|\neq 1 \implies a\notin\partial\mathbb{D}$, podem aplicar la fórmula fent aquesta suposició.
+
+\begin{enumerate}
+	\item Anem a calcular $A$.
+	$$\frac{1}{2\pi i}\int_{\partial\mathbb{D}}\frac{f(\omega)}{\omega - a} d\omega
+	= Ind(\partial\mathbb{D},a)f(a)$$
+	Aqui podem distinguir dos casos:
+	\begin{enumerate}
+		\item $a\in\mathbb{D} \implies Ind(\partial\mathbb{D},a)=1$, el que ens diu que $A=f(a)$ en aquest cas.
+		\item $a\notin\mathbb{D} \implies Ind(\partial\mathbb{D},a)=0$, el que ens diu que $A=0$ en aquest cas.
+	\end{enumerate}
+	\item Abans d'aplicar el mateix procediment per $B$, fem una petita deducció.
+	
+	Si $a=0$ el resultat és $B=0$. Suposem llavors $a\neq 0$:
+	$$B = \frac{1}{2\pi i}\int_{\partial\mathbb{D}}\frac{ag(\omega)}{a\omega - 1} d\omega 
+	= \frac{1}{2\pi i}\int_{\partial\mathbb{D}}\frac{g(\omega)}{\omega - \frac{1}{a}}
+	d\omega$$
+	Aplicant la mateixa fórmula, tenim que:
+	$$B = Ind\left(\partial\mathbb{D},\frac{1}{a}\right)g\left(\frac{1}{a}\right)$$
+	Tornem a distinguir casos igual que en el cálcul d'$A$:
+	\begin{enumerate}
+		\item $a\in\mathbb{D} \implies \frac{1}{a}\notin\mathbb{D} \implies 
+		Ind\left(\partial\mathbb{D},\frac{1}{a}\right)=0$, el que ens diu que $B=0$ en aquest cas.
+		\item $a\notin\mathbb{D} \implies \frac{1}{a}\in\mathbb{D} \implies 
+		Ind\left(\partial\mathbb{D},\frac{1}{a}\right)=1$, el que ens diu que $B=g(\frac{1}{a})$ en aquest cas.
+	\end{enumerate}
+\end{enumerate}
+
+L'integral que volem calcular, $I$, es calcula com $I=A-B$.
+\begin{enumerate}
+	\item Si $a\in\mathbb{D}$, $I=f(a)$
+	\item Si $a\notin\mathbb{D}$, $I=-g(\frac{1}{a})$
+\end{enumerate}
+
+\end{framed}
+\item Considerem $f(z)=\frac{2-z}{2+z}$.
+	\begin{enumerate}
+	\item Proveu que existeix una determinació $h(z)$ del logaritme de $f(z)$ en $D(0,2)$.
+	\begin{framed}
+	El que buscarem és una semirecta que uneixi 0 amb $\infty$ i que no sigui a l'imatge del domini, per tal de poder definir una branca de l'argument, determinant així el logaritme (hem vist a classe que són equivalents).
+	
+	Veïem que la semirecta dels reals negatius no és a l'imatge, és a dir, veïem que si la part imaginária de l'imatge és 0, la part real és positiva. Sigui $z=a+bi$ amb $|a+bi| < 2$, veïem que $Re(f(z)) > 0$:
+	$$f(a+bi) = \frac{2-a-bi}{2+a+bi} = \frac{2-a-bi}{2+a+bi}*\frac{2+a-bi}{2+a-bi} =$$
+	$$= \frac{4-(a+bi)^{2}}{(2+a)^{2}+b^{2}}$$
+	
+	Com $(2+a)^{2} + b^{2} > 0$, $\forall a,b\in\mathbb{R}$ examinem $4-(a+bi)^{2}$.
+	
+	Hem de veure que $Re(4-(a+bi)^{2}) > 0$. 
+	$$Re(4-(a+bi)^{2}) > 0 \iff Re((a+bi)^{2}) < 4$$ 
+	$$Re((a+bi)^{2}) < |(a+bi)^{2}| = |a+bi|^{2} < 4$$
+	
+	Amb això hem vist que la part real de l'imatge sempre és positiva, és a dir, que la recta real negativa no és a l'imatge d'$f$.
+	
+	Com l'imatge no conté la semirecta real negativa, podem definir una branca contínua de l'argument en $\mathbb{C} \backslash (-\infty,0]$, trobant així una determinació del logaritme, $h(z)$.
+	\end{framed}
+	\item Expresseu $h(z)$ com una sèrie de potències al voltant del 0 i doneu-ne el radi de convergència.
+	\begin{framed}
+	$h(z)$ és una funció holomorfa al voltant del 0, ja que $f$ ho és i tenim que
+	$$h'(z) = \frac{f'(z)}{f(z)}$$
+	Anem a construïr la sèrie de Taylor de $h(z)$ al voltant del 0.
+	$$h(z) = \sum_{n=0}^{\infty}c_{n}(z-0)^{n}$$
+	on $c_{n} = \frac{h^{(n)}(0)}{n!}$, és a dir que
+	$$h(z) = \sum_{n=0}^{\infty}\frac{h^{(n)}(0)}{n!}z^{n}$$
+	Anem a trobar $h^{(n)}(0)$, per això derivarem un parell de cops $h^{(n)}(z)$ fins a veure un patró i sustituïrem en 0.
+	Com $f$ és una funció holomorfa i $h$ és una determinació del logaritme de $f$, tenim que:
+	$$h'(z) = \frac{f'(z)}{f(z)} = \frac{\frac{-4}{(2+z)^{2}}}{\frac{2-z}{2+z}}
+	= \frac{-4}{(2+z)(2-z)} = \frac{1}{z-2} - \frac{1}{z+2}$$
+	$$h''(z) = \frac{1}{(z+2)^{2}} - \frac{1}{(z-2)^{2}}$$
+	$$h'''(z) = \frac{2}{(z-2)^{3}} - \frac{2}{(z+2)^{3}}$$
+	$$h^{iv}(z) = \frac{6}{(z+2)^{4}} - \frac{6}{(z-2)^{4}}$$
+	
+	Havent fet un parell de derivades, podem extreure'n un patró que es podria demostrar trivialment per inducció:
+	$$h^{(n)}(z) = (-1)^{n}\left(\frac{(n-1)!}{(z+2)^{n}} - \frac{(n-1)!}{(z-2)^{n}}\right)$$
+	$$h^{(n)}(0) = (-1)^{n}\left(\frac{(n-1)!}{2^{n}} - \frac{(n-1)!}{(-2)^{n}}\right) =$$
+	$$ = ... = \frac{((-1)^{n}-1)(n-1)!}{2^{n}}$$
+	
+	És a dir que la sèrie de Taylor de $h(z)$ és:
+	$$h(z) = \sum_{n=0}^{\infty}\frac{((-1)^{n}-1)(n-1)!}{2^{n}n!}z^{n}
+	= \sum_{n=0}^{\infty}\frac{(-1)^{n}-1}{2^{n}n}z^{n}$$
+	
+	Anem a calcular el radi de convergència d'aquesta sèrie usant el criteri de l'arrel:
+	$$\frac{1}{R} = \limsup_{n\rightarrow\infty}\sqrt[n]{\left|\frac{(-1)^{n}-1}{2^{n}n}\right|} = \limsup_{n\rightarrow\infty}\sqrt[n]{\left|\frac{-2}{2^{n}n}\right|} = \frac{1}{2} \implies R=2$$
+	\end{framed}	 
+	\end{enumerate}
+\item Sigui $f(z)=\frac{1}{z^{2}}$. Comproveu $f$ satisfà
+$$ \int_{\gamma}f(z)dz = 0 $$
+per tot camí $\gamma$ que no passi per 0 però $f$ no és analítica en el 0. Contradiu això el teorema de Morera?
+\begin{framed}
+Anem a calcular l'integral:
+$$ \int_{\gamma}f(z)dz = \int_{a}^{b} f(\gamma(t))\gamma'(t)dt = \int_{a}^{b}\frac{1}{\gamma(t)^{2}}\gamma'(t)dt =$$ 
+$$= -\left[\frac{1}{\gamma(t)}\right]_{a}^{b} =
+-\frac{1}{\gamma(b)} + \frac{1}{\gamma(a)} = 0$$
+ja que $\gamma(t)\neq 0$, $\forall t$
+
+$f$ no és analítica en el 0, perquè no és holomorfa en el 0. Això és degut a que $f(0)$ no està definit, llavors $f$ no és contínua en 0, llavors tampoc holomorfa.
+
+No contradiu al teorema de Morera però, perquè podem fer que el domini de l'hipòtesi del teorema sigui $\Omega = \mathbb{C}\backslash\{0\}$. $f$ és holomorfa a tot $\Omega$ i compleix que totes les corbes tancades que no passen pel 0, integren 0 (incloent-hi els triangles).
+
+\end{framed}	 
+		
+\end{enumerate}
+
+\end{document}

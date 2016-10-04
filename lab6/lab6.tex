@@ -1,0 +1,69 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 6}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item Sigui $f$ una funció holomorfa en $\mathbb{D}$ tal que existeix una constant $C>0$ de manera que per tot $z\in\mathbb{D}$,
+$$|f(z)|\sin (1-|z|)\leq C$$Proveu que per tot natural n,
+$$|f^{(n)}(0)|\leq C n! \frac{2}{(1-r)r^{n}}, \forall r\in(0,1)$$
+Finalment, proveu que per tot natural $n$,
+$$|f^{(n)}(0)|\leq 2 C n! \frac{(n+1)^{n+1}}{n^{n}}$$
+\begin{framed}
+Per la desigualtat de Cauchy tenim que
+$$|f^{(n)}(0)|\leq\frac{n!M}{r^{n}}$$
+On $M=\sup_{|z|=r}|f(z)|$. Hem d'arribar desde aquesta desigualtat al que volem. Anem a operar primer sobre l'hipòtesi:
+$$|f(z)|\leq \frac{C}{\sin (1-|z|)}\leq \frac{2C}{1-|z|}$$
+L'última desigualtat el veïem examinant el signe la funció $\sin(1-x) - \frac{1}{2}(1-x)$ amb $x\in(0,1)$. Derivem la funció i igualem a 0:
+$$-\cos(1-x) + \frac{1}{2} = 0 \implies \cos(1-x) = \frac{1}{2}$$
+Les dues solucions més properes a $(0,1)$ són $x_{1}=\frac{-5\pi}{3}+1=\frac{-2\pi}{3}, x_{2}=\frac{-\pi}{3}+1=\frac{2\pi}{3}$
+És a dir que a l'interval $(\frac{-2\pi}{3},\frac{2\pi}{3})$ la funció és monòtona. Anem a veure el quant val la funció en $x=\frac{-2\pi}{3}$ i en $x=1$:
+$$x=\frac{-\pi}{3} \implies \sin\left(\frac{4\pi}{3}\right) - \frac{1}{2}\left(\frac{4\pi}{3}\right) = 
+-\sin\left(\frac{\pi}{3}\right)-\frac{5\pi}{6} < 0$$
+$$x=1 \implies \sin(0) = 0$$
+
+D'aqui veïem que si $x\in(0,1)$, $\sin(1-x) \leq \frac{1}{2}(1-x) \implies \frac{1}{\sin(1-x)} \leq \frac{2}{(1-x)}$.
+
+$$|f^{(n)}(0)|\leq\frac{n!M}{r^{n}} = \frac{n!(\sup_{|z|=r}|f(z)|)}{r^{n}} \leq C n! \frac{2}{(1-r)r^{n}}$$
+
+Ara anem a veure l'altre que se'ns demana:
+
+Com la desigualtat d'abans ens serveix per qualsevol $r\in(0,1)$, prenem $r=\frac{n}{n+1}<1$, $\forall n$:
+$$|f^{(n)}(0)|\leq Cn!\frac{2}{\left(1-\frac{n}{n+1}\right)\left(\frac{n}{n+1}\right)^{n}} = 2 C n! \frac{(n+1)^{n+1}}{n^{n}}$$
+
+Com volíem  veure.
+\end{framed}
+\newpage
+\item Sigui $a\in\mathbb{R}$ i $f$ i $g$ dues funcions enteres tals que $Ref(z)\leq aReg(z)$. Proveu que existeix una constant $C\in\mathbb{C}$ tal que $f(z)=ag(z)+C$.
+\begin{framed}
+$$Ref(z)\leq aReg(z) \implies Ref(z)-aReg(z)\leq 0 \implies Re(f(z)-ag(z)) \leq 0$$
+Considerem ara $t(z) = e^{f(z)-ag(z)}$.
+$$|t(z)|=|e^{f(z)-ag(z)}| = e^{Re(f(z)-ag(z))} \leq e^{0} = 1$$
+Per teorema de Liouville, tenim que $t(z)=e^{f(z)-ag(z)}=C_{1}\in\mathbb{C}$, és a dir que $f(z)-ag(z)$ és constant, com volíem veure.
+\end{framed}
+\item Sigui $f:\mathbb{C}\rightarrow\mathbb{C}$ una funció entera i suposem que existeixen $M>0$ i $n\in\mathbb{N}$ tals que $|f(z)|\leq M|z|^{n}$ per a tot $z\in\mathbb{C}$. Demostreu $f$ és un polinomi de grau menor o igual que $n$.
+\begin{framed}
+Considerem l'expansió en sèrie al voltant del 0 de $f(z) = \sum_{k=0}^{\infty}\frac{f^{(k)}(0)}{k!}z^{n}$.
+Per la desigualtat de Cauchy tenim que 
+$$\frac{|f^{(k)}(0)|}{k!} \leq \frac{\sup_{|z|=r}(|f(z)|)}{r^{k}} \leq M\frac{r^n}{r^{k}} = Mr^{n-k}$$
+Com la desigualtat es compleix per qualsevol $r>0$, fem $r\to\infty$
+$$\lim_{r\to\infty}\frac{|f^{(k)}(0)|}{k!} = \frac{|f^{(k)}(0)|}{k!} \leq \lim_{r\to\infty}Mr^{n-k}$$
+Tenim que $\lim_{r\to\infty}Mr^{n-k}=0$ si $k>n$, llavors tots els coeficients de Taylor són 0 a partir de $k=n$, és a dir que $f$ és un polinomi de grau menor o igual que $n$. 
+\end{framed}
+\item Sigui $f$ una funció entera tal que $|f(z)|\leq Ce^{Rez}$ per tot $z\in\mathbb{C}$, on $C>0$ és una constant. Què es pot dir de $f$?
+\begin{framed}
+$$|f(z)|\leq Ce^{Rez} = C|e^{z}| \implies \left|\frac{f(z)}{e^{z}}\right|\leq C$$
+Aplicant el teorema de Liouville com $\frac{f(z)}{e^{z}}$ és holomorfa en tot el domini, tenim que $\frac{f(z)}{e^{z}} = C_{1}\in\mathbb{C}$. D'aqui deduïm $f(z) = C_{1}e^{z}$
+\end{framed}	
+		
+\end{enumerate}
+
+\end{document}

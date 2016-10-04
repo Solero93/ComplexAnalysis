@@ -1,0 +1,149 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 1}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item \textbf{Demostreu que per tot $z\in\mathbb{C}$
+$$|Re(z)|+|Im(z)|\leq\sqrt{2}|z|$$}
+\underline{Resolució:}
+
+Sigui $z$ un nombre complex de la forma $z=x+iy=|z|(\cos(\alpha)+i\sin(\alpha))$. Amb aquestes notacions, $|Re(z)|=|x|$ i $|Im(z)|=|y|$.
+
+Ara bé, tenim que:
+$$|x| = |z||\cos(\alpha)|$$
+$$|y| = |z||\sin(\alpha)|$$
+
+A més a més,
+
+$$|x|+|y| = |z|(|\cos(\alpha)| + |\sin(\alpha)|)$$
+
+Per arribar a la desigualtat que volem, busquem els màxims de l'expressió $|\cos(\alpha)| + |\sin(\alpha)|$. Per fer-ho, notem que podem treure els valors absoluts i suposar que $\alpha$ és del primer quadrant per la periodicitat de les funcions $\sin$ i $\cos$.
+
+Definim llavors $f(\alpha)=\cos(\alpha) + \sin(\alpha)$. Derivem i igualem a 0:
+$$f'(\alpha) = \cos(\alpha)-\sin(\alpha)=0 \Leftrightarrow \cos(\alpha)=\sin(\alpha)$$ que ens dóna la solució $\alpha=\frac{\pi}{4}$. Podem comprovar que és el màxim absolut.
+
+Tenim llavors que $$|x|+|y| = \left|z\right|\left(\left|\cos\left(\alpha\right)\right| + \left|\sin\left(\alpha\right)\right|\right) \leq \left|z\right|\left(\cos\left(\frac{\pi}{4}\right) + \sin\left(\frac{\pi}{4}\right)\right) =$$ 
+$$= |z|\left(\frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}\right) = |z|\sqrt{2}$$
+
+Com volíem veure.
+
+\item \textbf{Sigui $\Omega$ un domini i $f$ una funció holomorfa en $\Omega$. Proveu que les següents condicions són equivalents.}
+
+\begin{enumerate}
+\item \textbf{$Re(f)$ és constant en $\Omega$}
+\item \textbf{$Im(f)$ és constant en $\Omega$}
+\item \textbf{La funció conjugada de $f$, $\bar{f}$, és holomorfa en $\Omega$}
+\item \textbf{$f$ és constant en $\Omega$}
+\item \textbf{$|f|$ és constant en $\Omega$}
+\end{enumerate}
+
+\underline{Resolució:}
+
+Per veure les equivalències, es veu trivialment que l'enunciat d) implica tota la resta de enunciats. Ara veïem les implicacions contràries:
+
+\begin{enumerate}
+\item $(a)\Rightarrow(d)$:
+
+Tenim que $f(x+yi)=k_{1}+v(x,y)i$, $k_{1}\in\mathbb{C}$
+	
+Llavors $$Df(x,y)=
+\left(\begin{matrix}
+  0 & 0 \\
+  v_{x}(x,y) & v_{y}(x,y)
+\end{matrix}\right) = 
+\left(\begin{matrix}
+  \alpha & -\beta \\
+  \beta & \alpha
+\end{matrix}\right)$$
+
+D'aquí veiem que $v_{x}(x,y)=v_{y}(x,y)=0 \Leftrightarrow v(x,y)=k_{2}\in\mathbb{C}$
+
+Com volíem veure.
+
+\item $(b)\Rightarrow(d)$:
+
+Es pot veure anàlogament, però en aquest cas és la segona fila de la matriu jacobiana que és de 0s.
+
+\item $(c)\Rightarrow(d)$:
+
+Si $Df(x,y)=
+\left(\begin{matrix}
+  \alpha & -\beta \\
+  \beta & \alpha
+\end{matrix}\right)$
+Tenim que:
+$D\bar{f}(x,y)=
+\left(\begin{matrix}
+  \alpha & -\beta \\
+  -\beta & -\alpha
+\end{matrix}\right)$
+
+Perquè la matriu compleixi les equacions de Cauchy Riemann, tenim que $\alpha=-\alpha$ i $-\beta=\beta$ que només pot passar si $\alpha=\beta=0$ $\Rightarrow$ $f$ és constant.
+
+\item $(e)\Rightarrow(d)$:
+
+Si $|f|$ és constant també l'és $|f|^{2}(x,y) = u(x,y)^2 + v(x,y)^2 = K \in \mathbb{C}$
+
+Llavors 
+
+$$\frac{\partial (u^{2} + v^{2}) }{\partial x} = 0 = \dfrac{\partial (u^{2} + v^{2}) }{\partial y}$$
+
+Això implica que:
+
+$$u \frac{\partial u}{\partial x} + v \frac{\partial v}{\partial x} = 0 = u \frac{\partial u}{\partial y} + v \frac{\partial v}{\partial y}$$
+
+Si apliquem les equacions de Cauchy-Riemann arribem a:
+
+$$u \frac{\partial v}{\partial y} + v \frac{\partial v}{\partial x} = 0 = -u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y}$$
+
+$$(u^{2} + v^{2}) \frac{\partial v}{\partial y} = 0$$
+
+Si $u^{2}+v^{2}=0$, llavors $f=0$ i ja tenim que $f$ és constant. 
+
+Si $u^{2}+v^{2}\neq 0$, llavors $\dfrac{\partial v}{\partial y}=0$ que ens dóna $\dfrac{\partial v}{\partial x}=0$. D'aqui veïem un altre cop que $\dfrac{\partial u}{\partial x}=\dfrac{\partial u}{\partial y}=0$ que ens torna a donar que $f$ és constant.
+
+\end{enumerate}
+
+\item \textbf{Sigui $u(x,y)=x^{2}-y^{2}+x$. Trobeu $v(x,y)$ de manera que la funció $f(x+iy)=u(x,y)+iv(x,y)$ sigui holomorfa a $\mathbb{C}$ i compleixi $f(0)=i$.}
+
+\underline{Resolució:}
+
+Anem a escriure la matriu jacobiana de $f$:
+$$Df(x,y)=
+\left(\begin{matrix}
+  u_{x}(x,y) & u_{y}(x,y) \\
+  v_{x}(x,y) & v_{y}(x,y)
+\end{matrix}\right) = 
+\left(\begin{matrix}
+  u_{x}(x,y) & u_{y}(x,y) \\
+  -u_{y}(x,y) & u_{x}(x,y)
+\end{matrix}\right) = $$
+$$= \left(\begin{matrix}
+  2x+1 & -2y \\
+  2y & 2x+1
+\end{matrix}\right)$$
+
+Tenim llavors que 
+\begin{enumerate}
+\item $v_{x}(x,y) = 2y \Rightarrow  v(x,y) = y^{2} + c(x)$
+\item $v_{y}(x,y) = 2x+1 \Rightarrow v(x,y) = x^{2} + x + c(y)$
+\end{enumerate}
+
+on $c(x)$, $c(y)$ són constants que depenen només de $x$ i de $y$ respectivament.
+
+D'aqui podem concluïr que $v(x,y) = y^{2} + x^{2} + x + K$ on $K$ és una constant que no depèn ni de $x$ ni de $y$. Fem servir la última hipòtesi per trobar aquesta $K$:
+
+$$f(0+0i) = i = u(0,1) + iv(0,1) \Rightarrow v(0,1) = 1$$ 
+
+Trobem que $K=0 \Rightarrow v(x,y) = y^{2} + x^{2} + x$
+
+\end{enumerate}
+
+\end{document}

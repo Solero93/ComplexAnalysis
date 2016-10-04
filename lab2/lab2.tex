@@ -1,0 +1,180 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 2}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item
+	\begin{enumerate}
+	\item Sigui $\Omega\in\mathbb{C}$ un domini. Diem que una funció $u:\Omega\rightarrow\mathbb{R}$ és armònica si el seu laplacià és 0, és a dir:
+	$$\Delta u(x,y)=\frac{\partial^{2}u}{\partial x^{2}}(x,y) + \frac{\partial^{2}u}{\partial y^{2}}(x,y)=0$$
+	Proveu que si $f$ és una funció holomorfa en $\Omega$, aleshores les funcions $u:=Re(f)$ i $v:=Im(f)$ són funcions armòniques.
+	\begin{framed}
+	
+	Per les equacions de Cauchy-Riemann tenim que:
+	$$
+	\begin{cases}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+		\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \\
+	\end{cases}
+	$$
+	On $u(x,y)=Re(f)$ i $v(x,y)=Im(f)$
+	Derivem la primera equació respecte $x$ i la segona respecte $y$ per obtenir:
+	$$
+	\begin{cases}
+		\frac{\partial u}{\partial x^{2}} = \frac{\partial v}{\partial y \partial x} \\
+		\frac{\partial u}{\partial y^{2}} = -\frac{\partial v}{\partial x \partial y} \\
+	\end{cases}
+	$$	
+	D'aqui treïem que $\frac{\partial u}{\partial x^{2}} + \frac{\partial u}{\partial y^{2}} = \frac{\partial v}{\partial y \partial x} - \frac{\partial v}{\partial x \partial y} = 0$ com volíem veure amb $Re(f)$.
+	
+	Podem veure anàlogament $Im(f)$ derivant la primera equació respecte $y$ i la segona respecte $x$. Al final arribem a: $\frac{\partial v}{\partial x^{2}} + \frac{\partial v}{\partial y^{2}} = \frac{\partial u}{\partial x \partial y} - \frac{\partial u}{\partial y \partial x} = 0$ com volíem veure amb $Im(f)$.
+	\end{framed}
+	\item Justifiqueu si $2xy+x^{2}+5y^{2}+3$ pot ser la part real d'una funció entera $f$. I $x^{4}-6x^{2}y^{2}+y^{4}$? En cas afirmatiu, trobeu les corresponents funcions $f$.
+
+	\begin{framed}
+
+	Mirem si compleixen que el seu laplacià sigui 0:
+	\begin{enumerate}
+	\item $u(x,y)=2xy+x^{2}+5y^{2}+3 \Rightarrow \frac{\partial u}{\partial x^{2}} + \frac{\partial u}{\partial y^{2}} = 2 + 10 = 12\neq 0$ $\forall x,y\in\mathbb{R}$. Aquest no pot ser part real d'una funció entera.
+	\item $u(x,y)=x^{4}-6x^{2}y^{2}+y^{4} \Rightarrow \frac{\partial u}{\partial x^{2}} + \frac{\partial u}{\partial y^{2}} = 12x^{2} - 12y^{2} + 12y^{2} - 12x^{2} = 0$ $\forall x,y\in\mathbb{R}$. Aquest pot ser part real d'una funció entera. Anem a trobar la part imaginària d'aquesta funció $f$:
+	
+	Per les equacions de Cauchy Riemann tenim que:
+	$$
+	\begin{cases}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+		\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \\
+	\end{cases} \Rightarrow
+	\begin{cases}
+		\frac{\partial v}{\partial y} = 4x^{3} - 12y^{2}x \\
+		\frac{\partial v}{\partial x} = -(4y^{3}-12x^{2}y) \\
+	\end{cases}	
+	$$	
+	
+	Si integrem en les dues equacions i ajuntem les constants d'integració ens surt que $v(x,y) = 4x^{3}y - 4y^{3}x + K$ per $K\in\mathbb{R}$.
+	
+	\end{enumerate}
+
+	\end{framed}
+	
+	\item Trobeu els valors de $\gamma\in\mathbb{R}$ per tal que la funció $u_{\gamma}(x,y)=3x^{2}+4xy+\gamma y^{2}$ sigui la part real d'una funció entera $f_{\gamma}$. Per aquests valors de $\gamma$ trobeu la part imaginària de $f_{\gamma}$.
+
+	\begin{framed}
+		
+	Mirem que compleixi que el seu laplacià sigui 0:
+	$$\frac{\partial u_{\gamma}}{\partial x^{2}} + \frac{\partial u_{\gamma}}{\partial y^{2}} = 6 + 2\gamma = 0 \Rightarrow \gamma=-3$$
+	Ara que tenim $\gamma$, trobem la part imaginària de $f$:
+	
+	Per les equacions de Cauchy Riemann tenim que:
+	$$
+	\begin{cases}
+		\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+		\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} \\
+	\end{cases} \Rightarrow
+	\begin{cases}
+		\frac{\partial v}{\partial y} = 6x + 4y \\
+		\frac{\partial v}{\partial x} = 6y - 4x \\
+	\end{cases}	
+	$$
+	
+	Si integrem en les dues equacions i ajuntem les constants d'integració ens surt que $v(x,y) = 6xy - 2x^{2} + 2y^{2} + K$, $K\in\mathbb{R}$.		
+	\end{framed}
+		
+	\end{enumerate}
+\newpage
+\item
+	\begin{enumerate}	 
+	\item Estudieu la convergència de la sèrie 
+	$$T(\omega)=\sum_{n\geq 0}\frac{(n+1)(n+2)}{2^{n+1}}\omega^{n}$$
+	i calculeu-ne la suma.
+
+	\begin{framed}
+	Calculem el radi de convergència de $T(\omega)$, $R$:
+	$$\frac{1}{R} = \limsup_{n\rightarrow\infty}\sqrt[n]{\frac{(n+1)(n+2)}{2^{n+1}}} = \frac{1}{2} \Rightarrow R=2$$
+	Concluïm que la sèrie convergeix a la bola centrat a 0 i amb radi 2, divergeix a la resta de l'espai (la frontera de la bola encara no sabem estudiar-la).
+	
+	Ara anem a sumar la sèrie. Observem que si integrem dos cops els termes de la sèrie, obtenim una sèrie geomètrica que sabem sumar directament. Els teoremes vists a classe ens asseguren que el radi de convergència no canvia si seguim aquest procediment, llavors podem fer-ho sense problemes:
+	$$T(\omega) = \sum_{n\geq 0}\frac{(n+1)(n+2)}{2^{n+1}}\omega^{n}$$
+	$$\int T(\omega) d\omega = \sum_{n\geq 0}(n+2)\left(\frac{\omega}{2}\right)^{n+1}$$
+	$$\int \int T(\omega) d\omega = \sum_{n\geq 0}2\left(\frac{\omega}{2}\right)^{n+2} =
+		\frac{2\left(\frac{\omega}{2}\right)^{2}}{1-\left(\frac{\omega}{2}\right)}$$
+
+	Per tal de trobar $T(\omega)$ derivem dos cops respecte $\omega$ la funció resultant que ens dóna $T(\omega) = \frac{8}{(2-\omega)^{3}}$
+	\end{framed}
+	\item Trobeu els valors de $\omega\in\mathbb{C}$ per tal que $T(\omega)=\frac{8}{1+i}$.
+
+	\begin{framed}
+	Com tenim la suma $T(\omega)$ calculada simplement l'igualem a $\frac{8}{1+i}$ i aïllem $\omega$.	
+	$$ \frac{8}{(2-\omega)^{3}}= \frac{8}{1+i} \Leftrightarrow (2-\omega)^{3} = 1+i$$
+	Per aïllar $\omega$ trobem les arrels cúbiques de $1+i$.
+	$$\sqrt[3]{1+i} = \sqrt[3]{\sqrt{2}(\cos(45) + i\sin(45))} = 	$$
+	$$= \sqrt[3]{\sqrt{2}} (\cos(45+120k)+i\sin(45+120k)), k=0,1,2$$
+	
+	\begin{enumerate}
+	\item $k=0 \Rightarrow \omega = 2-\sqrt[6]{2}(\cos(45)+i\sin(45)) =$\\
+			$2-\sqrt[6]{2}\left(\frac{\sqrt{2}}{2}+i\frac{\sqrt{2}}{2}\right)$
+	\item $k=1 \Rightarrow \omega = 2-\sqrt[6]{2}(\cos(165)+i\sin(165)) =$\\
+			$2-\sqrt[6]{2}(-\cos(15)+i\sin(15)) = 2-\sqrt[6]{2}(-\frac{\sqrt{6}+\sqrt{2}}{4}+i\frac{\sqrt{6}-\sqrt{2}}{4})$
+	\item $k=2 \Rightarrow \omega = 2-\sqrt[6]{2}(\cos(-15)+i\sin(-15)) =$\\
+			$2-\sqrt[6]{2}(\cos(15)-i\sin(15)) = 2-\sqrt[6]{2}(\frac{\sqrt{6}+\sqrt{2}}{4}-i\frac{\sqrt{6}-\sqrt{2}}{4})$
+	\end{enumerate}		
+	
+	\end{framed}	
+	
+	\item Sigui $G=\{z\in\mathbb{C}; Re(z)\geq 0\}$. Per tot $z\in G$, estudieu la convergència i calculeu la suma de la sèrie
+	$$\sum_{n=0}^{\infty}\left(\frac{1-z}{1+z}\right)^{n}\frac{(n+1)(n+2)}{2^{n+1}}$$
+
+	\begin{framed}
+	
+	Si fem el canvi $\omega = \frac{1-z}{1+z}$ sabem que hi ha convergència si $|\omega| < 2$. Veïem quines $z\in G$ compleixen que $\left|\frac{1-z}{1+z}\right| < 2$
+	
+	$$ \left|\frac{1-z}{1+z}\right| < 2 \Leftrightarrow \left|\frac{1-z}{1+z}\right|^{2} < 4 \Leftrightarrow |1-z|^{2} < 4|1+z|^{2}$$	
+	Ara prenem $z=a+bi$ i calculem les normes directament:
+	$$ (1-a)^{2}+b^{2} < 4((1+a)^{2}+b^{2}) \Leftrightarrow 
+		1^{2}-2a+a^{2}+b^{2}-4-8a-4b^{2} < 0 \Leftrightarrow$$
+	$$ 3b^{2} + 3a^{2} + 10a + 3 > 0$$
+	
+	Notem que $3b^{2}>0$ $\forall b\in\mathbb{R}$. Ara anem a examinar l'expressió
+	$3a^{2}+10a+3$. Si calculem les seves arrels ens dóna $a=-3$ i $a=-\frac{1}{3}$ i com el coeficient de $a^{2}$ és positiu, podem dir que si $a>-\frac{1}{3}$ llavors $3a^{2}+10a+3>0$. Com $z\in G$, $a>0$, hem trobat que tots els elements de $z\in G$ compleixen que $\left|\frac{1-z}{1+z}\right| < 2$, llavors la convergència es té per tots els elements de $G$.
+	
+	Per trobar la suma de la sèrie, simplement sustituïm a l'expressió que hem trobat a a):
+	$$T(z) = \frac{8}{\left(2-\frac{1-z}{1+z}\right)^{3}}$$
+	\end{framed}	
+	\end{enumerate}
+\newpage
+\item Sigui $R<\infty$ el radi de convergència de la sèrie $\sum_{n\geq 0}c_{n}z^{n}$. Per tot $k\in\mathbb{N}$, calculeu el radi de convergència de:
+	\begin{enumerate}
+	\item $$\sum_{n\geq 0}c_{n}z^{kn}$$
+	
+	\begin{framed}
+	
+	Definim la successió $d_{m} = c_{m}$ si $m$ és múltiple de $k$ i $d_{m} = 0$ altrament. Ara ja podem calcular el radi de convergència de la sèrie:
+	$$\frac{1}{R_{a}} = \limsup_{n\rightarrow\infty} \sqrt[n]{|d_{n}|} = \limsup_{n\rightarrow\infty} \sqrt[kn]{|c_{n}|} = \frac{1}{\sqrt[k]{R}} \Rightarrow R_{a}=\sqrt[k]{R}$$
+	\end{framed}
+	
+	\item $$\sum_{n\geq 0}c_{n}z^{k+n}$$
+	
+	\begin{framed}
+	Com $z^{k}$ no depèn de $n$, el podem treure fora del sumatori:
+	$$z^{k}\sum_{n\geq 0}c_{n}z^{n}$$
+	Com $z^{k}$ és finit, no ens afecta en l'estudi de convergència de la sèrie, llavors té el mateix radi de convergència que la sèrie original. $R_{b}=R$.	
+	\end{framed}	
+	\item $$\sum_{n\geq 0}c_{n}^{n}z^{n^{2}}$$
+	
+	\begin{framed}
+	Definim la successió $d_{m} = c_{m}^{m}$ si $m$ és quadrat i $d_{m}=0$ altrament. Ara ja podem calcular el radi de convergència de la sèrie:
+	$$\frac{1}{R_{c}} = \limsup_{n\rightarrow\infty} \sqrt[n]{|d_{n}|} = \limsup_{n\rightarrow\infty} \sqrt[n^{2}]{|c_{n}^{n}|} = \limsup_{n\rightarrow\infty} \sqrt[n]{|c_{n}|} = \frac{1}{R}$$ 
+	$$\Rightarrow R_{c}=R$$
+	\end{framed}
+	\end{enumerate}
+	
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,97 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 4}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item Siguin $X$ un espai topològic connex i $f:X \rightarrow \mathbb{C} \backslash \{0\}$ una funció contínua. Una determinació de l’arrel n-èsima de $f$ és una funció contínua $h:X \rightarrow \mathbb{C} \backslash \{0\}$ tal que $(h(x))^{n} = f(x)$, per a tot $x\in X$.
+Demostreu que si $h$ i $g$ són dues determinacions de l’arrel n-èsima de $f$ llavors existeix una arrel n-èsima de la unitat $\zeta$ tal que $h(x) = \zeta * g(x)$, per a tot $x\in X$
+	\begin{framed}
+	El nostre objectiu serà passar de determinacions de l'arrel a determinacions de $\log f(x)$.
+	$$(h(x))^{n} = f(x) \implies e^{n\log(h(x))} = e^{\log(f(x))} = f(x)$$
+	Com $e^{n\log(h(x))}$ és una funció contínua, tant $n\log(h(x))$ com $n\log(g(x))$ són determinacions de $\log f(x)$, ja que compleixen la definició donada a classe. Ara bé, com estem en un espai connex, $f$ és una funció contínua i aquestes dues funcions són determinacions de $\log f(x)$, per $k\in\mathbb{Z}$ i independentment d'$x$:
+	$$n\log(h(x)) - n\log(g(x)) = 2k\pi i$$
+	$$n(\log(h(x)) - \log(g(x))) = 2k\pi i$$
+	$$n\left(\log\left(\frac{h(x)}{g(x)}\right)\right) = 2k\pi i$$
+	$$\log\left(\frac{h(x)}{g(x)}\right) = \frac{2k\pi i}{n}$$
+	$$\frac{h(x)}{g(x)} = e^{\frac{2k\pi i}{n}}$$
+	$$h(x) = g(x)e^{\frac{2k\pi i}{n}}$$
+	on $e^{\frac{2k\pi i}{n}}$ és una arrel n-èssima de la unitat, ja que $e^{2k\pi i} = 1$, $\forall k\in\mathbb{Z}$ i $\forall x\in X$, tal com volíem veure.
+	\end{framed}
+\newpage
+\item Siguin $h_{0}(z)$, $h_{1}(z)$, $h_{2}(z)$, $h_{3}(z)$ i $h_{4}(z)$ les determinacions de l'arrel cinquena en $\Omega = \mathbb{C} \backslash (-\infty,0]$ tal que $h_{0}(1)=1$, $h_{1}(1) = e^{2\pi i/5}$, $h_{2}(1) = e^{4\pi i/5}$, $h_{3}(1) = e^{6\pi i/5}$ i $h_{4}(1) = e^{8\pi i/5}$.
+	\begin{enumerate}
+	\item Relacioneu les funcions $h_{j}$ entre elles i descriviu $h_{j}(\Omega)$ per $j=0,1,2,3,4$.
+	\begin{framed}
+	Per relacionar les funcions entre elles, fem servir l'exercici anterior. Relacionem les determinacions de forma general, sigui $i,j\in\{0,1,2,3,4\}$. Per l'exercici anterior sabem que
+	$$h_{i} = h_{j} * \zeta$$
+	on $\zeta$ és una arrel cinquena de la unitat. Per calcular aquesta $\zeta$, sustituïm en 1:
+	$$h_{i}(1) = h_{j}(1) * \zeta$$
+	$$\frac{h_{i}(1)}{h_{j}(1)} = \zeta$$
+
+	És a dir, $h_{k} = h_{k}(1) * h_{0}$, $\forall k\in\{0,1,2,3,4\}$	
+		Com $h_{0}(1) = 1$ i el domini és $\mathbb{C} \backslash (-\infty,0]$, $h_{0}$ és la determinació principal de l'arrel cinquena, és a dir:
+	$$h_{0}(z) = e^{\frac{1}{5}Log(z)} = e^{\frac{1}{5}(ln(|z|) + iArg(z))} = \sqrt[5]{|z|}e^{\frac{iArg(z)}{5}}$$
+	Ara amb $h_{0}$ i la relació entre determinacions anem a trobar les imatges que se'ns demanen. Sigui $r:=|z|$ i $\theta:=Arg(z)$:
+	$$h_{0}(\Omega) = \{\sqrt[5]{r}e^{\frac{i\theta}{5}} : r>0, \theta\in(-\pi,\pi) \} $$
+	$$= \left\lbrace r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(-\frac{\pi}{5},\frac{\pi}{5}\right)\right\rbrace$$
+	Per la resta, simplement desplacem el domini de $\theta_{1}$ amb el desplaçament que li pertoca. És a dir per una $j$ fixada, el desplaçament de $\theta_{1}$ respecte $h_{0}$ de $h_{j}$ és $j*\frac{2\pi}{5}$	
+	\begin{enumerate}
+	\item $h_{1}(\Omega) = \{r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(-\frac{\pi}{5} 
+	+ \frac{2\pi}{5},\frac{\pi}{5}+ \frac{2\pi}{5}\right)\} = $
+	$$\left\lbrace r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(\frac{\pi}{5},\frac{3\pi}{5}\right)\right\rbrace$$ 
+	\item $h_{2}(\Omega) = \{r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(-\frac{\pi}{5} 
+	+ \frac{4\pi}{5},\frac{\pi}{5}+ \frac{4\pi}{5}\right)\} = $
+	$$\left\lbrace r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(\frac{3\pi}{5},\frac{5\pi}{5}\right)\right\rbrace$$ 
+	\item $h_{3}(\Omega) = \{r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(-\frac{\pi}{5} 
+	+ \frac{6\pi}{5},\frac{\pi}{5}+ \frac{6\pi}{5}\right)\} = $
+	$$\left\lbrace r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(\frac{5\pi}{5},\frac{7\pi}{5}\right)\right\rbrace$$
+	\item $h_{4}(\Omega) = \{r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(-\frac{\pi}{5} 
+	+ \frac{8\pi}{5},\frac{\pi}{5}+ \frac{8\pi}{5}\right)\} = $
+	$$\left\lbrace r_{1}e^{i\theta_{1}} : r_{1}>0, \theta_{1}\in\left(\frac{7\pi}{5},\frac{9\pi}{5}\right)\right\rbrace$$
+	\end{enumerate}
+	\end{framed}
+	\item Per $j=0, 1, 2, 3, 4$ relacioneu $h_{j}$ amb Log i Arg (on Log i Arg denoten les
+branques principals del logaritme i de l’argument respectivament).
+	\begin{framed}
+	De la deducció anterior hem vist que $h_{0}$ és la determinació principal de l'arrel cinquena és a dir que:
+	$$h_{0}(z) = e^{\frac{1}{5}Log(z)} = e^{\frac{1}{5}(ln(|z|) + iArg(z))} = \sqrt[5]{|z|}e^{\frac{iArg(z)}{5}}$$
+	La resta es dedueixen a partir de la relació entre determinacions:
+	\begin{enumerate}
+		\item $h_{1}(z) = e^{\frac{2\pi i}{5}} * h_{0}(z) = e^{\frac{1}{5}Log(z) + \frac{2\pi i}{5}} =$
+		$$\sqrt[5]{|z|}e^{\frac{iArg(z)}{5} + \frac{2\pi i}{5}}$$
+		\item $h_{2}(z) = e^{\frac{4\pi i}{5}} * h_{0}(z) = e^{\frac{1}{5}Log(z) + \frac{4\pi i}{5}} =$
+		$$\sqrt[5]{|z|}e^{\frac{iArg(z)}{5} + \frac{4\pi i}{5}}$$
+		\item $h_{3}(z) = e^{\frac{6\pi i}{5}} * h_{0}(z) = e^{\frac{1}{5}Log(z) + \frac{6\pi i}{5}} =$ 
+		$$\sqrt[5]{|z|}e^{\frac{iArg(z)}{5} + \frac{6\pi i}{5}}$$
+		\item $h_{4}(z) = e^{\frac{8\pi i}{5}} * h_{0}(z) = e^{\frac{1}{5}Log(z) + \frac{8\pi i}{5}} =$
+		$$\sqrt[5]{|z|}e^{\frac{iArg(z)}{5} + \frac{8\pi i}{5}}$$
+	\end{enumerate}
+	\end{framed}
+	\item Usant les relacions anterior, trobeu el valor de $h_{j}(i)$, per $j = 0,1,2,3,4$ i $h_{2}(1+i)$
+	\begin{framed}
+	Trobant els valors d' $h_{0}(i)$ i de $h_{0}(1+i)$, on $h_{0}$ és la determinació principal, ja tindrem el valor de la resta.
+	\begin{enumerate}
+		\item $h_{0}(i) = \sqrt[5]{|i|}e^{\frac{iArg(i)}{5}} = e^{\frac{i\frac{\pi}{2}}{5}} = e^{\frac{\pi i}{10}} $
+		\item $h_{1}(i) = e^{\frac{\pi i}{10} + \frac{2\pi i}{5}} = e^{\frac{5\pi i}{10}} = e^{\frac{\pi i}{2}}$
+		\item $h_{2}(i) = e^{\frac{\pi i}{10} + \frac{4\pi i}{5}} = e^{\frac{9\pi i}{10}}$
+		\item $h_{3}(i) = e^{\frac{\pi i}{10} + \frac{6\pi i}{5}} = e^{\frac{13\pi i}{10}}$
+		\item $h_{4}(i) = e^{\frac{\pi i}{10} + \frac{8\pi i}{5}} = e^{\frac{17\pi i}{10}}$
+		\item $h_{0}(1+i) = \sqrt[5]{|i+1|}e^{\frac{iArg(i+1)}{5}} = \sqrt[10]{2}e^{\frac{i\frac{\pi}{4}}{5}} = \sqrt[10]{2}e^{\frac{\pi i}{20}}$
+		\item $h_{2}(1+i) = \sqrt[10]{2}e^{\frac{\pi i}{20} + \frac{4\pi i}{5}} 
+		= \sqrt[10]{2}e^{\frac{17\pi i}{20}}$
+	\end{enumerate}	 
+	\end{framed}
+		
+	\end{enumerate}
+		
+\end{enumerate}
+
+\end{document}

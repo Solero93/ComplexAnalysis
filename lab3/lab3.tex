@@ -1,0 +1,144 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\author{Christian José Soler}
+\title{Anàlisi Complexa - Laboratori 3}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item
+	\begin{enumerate}
+	\item Sigui Log la determinació principal del logaritme. És cert que Log$(i^{3})=3$Log$(i)$? Quina relació hi ha entre els dos termes?
+	\begin{framed}
+	Calculem cadascun dels logaritmes, suposant l'argument principal en ambdós casos
+	
+	Sigui $l:=$Log
+	
+	\begin{enumerate}
+	 \item $l(i^{3}) = l(-i) = \ln(|-i|) + i\arg(-i) = 0-\frac{\pi}{2}i = -\frac{\pi}{2}i$
+	 \item $3l(i) = 3(\ln(|i|)+i\arg(i)) = 0+3\frac{\pi}{2}i = 3\frac{\pi}{2}i$
+	\end{enumerate}
+
+	Veïem que no són les mateixes.	
+	La relació entre elles és que $l(i^{3}) = -3*3l(i)$.
+	
+	\end{framed}
+	\item Trobeu totes les solucions de l’equació $\sin(z)=\cos(z)$.
+
+	\begin{framed}
+	$$\sin(z) = \cos(z)$$
+	$$\frac{e^{iz}-e^{-iz}}{2i} = \frac{e^{iz}+e^{-iz}}{2}$$
+	$$e^{iz}-e^{-iz} = ie^{iz}+ie^{-iz}$$
+	$$(1-i)e^{iz} = (1+i)e^{-iz}$$
+	$$e^{2iz} = \frac{1+i}{1-i} = i$$
+	$$2iz = \log(i)$$
+	$$z = \frac{\log(i)}{2i} = -i\frac{\frac{\pi}{2}i+2k\pi i}{2} = \frac{\pi}{4} + k\pi, k\in\mathbb{Z}$$
+	
+	\end{framed}
+		
+	\end{enumerate}
+\newpage
+\item Trobeu totes les funcions holomorfes $f:\mathbb{D}\rightarrow \mathbb{C}$ tals que
+	$$f(z)^{2}+2zf(z)+1=0,\forall z\in\mathbb{D}$$
+
+	\begin{framed}	
+	$$f(z)^{2}+2zf(z)+1=(f(z)+z)^{2}+1-z^{2}=0$$
+	$$f(z)=\pm\sqrt{z^{2}-1}-z$$
+	
+	Tenim llavors dos candidats:
+	$$f_{1}(z) = \sqrt{z^{2}-1}-z$$
+	$$f_{2}(z) = -\sqrt{z^{2}-1}-z$$
+	
+	Anem a veure si són holomorfes. Es pot veure trivialment que ho són ambdós o cap. Estudiem llavors només $f_{1}(z)$
+	$$f_{1}(z) = g(z) - h(z)$$
+	on $g(z)=\sqrt{z^{2}-1}$ i $h(z)=z$. $f_{1}(z)$ és holomorfa llavors si i només si $g(z)$ ho és.
+	
+	Determinem l'arrel quadrada a $\mathbb{C}\backslash r$ on $r$ és una corba simple qualsevol que uneix el 0 amb l'infinit i triem una branca de l'argument qualsevol. Fent això conseguim que l'arrel quadrada sigui holomorfa a tot arreu on estigui definit.
+	
+	Si volem que la funció $g(z)$ sigui holomorfa hem de definir la corba $r$ de tal manera que $g(\mathbb{D})\cap r = \emptyset$.
+	
+	Tenim llavors que si afegim aquesta condició a $r$ i determinem així l'arrel quadrada, $g(z)$ serà holomorfa (de fet la condició també és necessària).
+	
+	Hem de veure que existeix almenys un $r$ que compleixi aquestes condicions, per tal de poder dir que hi ha solució. Triem $r_{1}$ com la corba que podem identificar amb $[0,\infty)$. Veïem llavors que $\forall z\in\mathbb{D}$, $z^{2}-1 \notin [0,\infty)$. 
+	
+	Notem que perquè $z^{2}-1 \in [0,\infty)$, $z$ ha de ser real. 
+	
+	Però com $z\in\mathbb{D}\cap\mathbb{R} \implies |z|<1 \implies z^{2}<1 \implies z^{2}-1\notin [0,\infty)$.	
+	
+	Tenim llavors que existeix almenys un $r$ que compleixi les condicions.
+	
+	Amb aquest apunt veïem que amb aquestes determinacions possibles de l'arrel quadrada, la funció $g(z)$ és holomorfa a $\mathbb{D}$.
+	
+	És a dir que per qualsevol d'aquestes determinacions de l'arrel quadrada, i només per aquestes, les funcions candidates $f_{1}(z)$ i $f_{2}(z)$ són ambdós holomorfes i solucions del nostre problema.
+	
+	\end{framed}
+\newpage
+\item
+	\begin{enumerate}
+	\item Considerem la sèrie
+	$$S(z)=\sum_{n\geq 1} \frac{(4z-2)^{n}}{n}$$
+	Estudieu-ne la convergència i calculeu-ne la suma.
+	
+	\begin{framed}
+	
+	Sigui $\omega=4z-2$. Estudiem la convergència de $S(\omega)= \sum_{n\geq 1} \frac{\omega^{n}}{n}$.	
+	$$\frac{1}{R} = \limsup_{n\rightarrow\infty}\sqrt[n]{\frac{1}{n}} = 1 \Rightarrow R=1$$
+	
+	Tenim doncs que la sèrie convergeix si $\omega\in\mathbb{D}$. Anem a traspassar aquest domini a $z$:
+	$$\omega\in\mathbb{D} \Leftrightarrow |\omega|<1 \Leftrightarrow |4z-2|<1 \Leftrightarrow \left|z-\frac{1}{2}\right|<\frac{1}{4}$$
+	És a dir que la sèrie convergeix si $z\in B_{\frac{1}{4}}\left(\frac{1}{2}\right)$ on $B_{r}(p)$ denota la bola de radi $r$ i centre $p$.
+	
+	Ara anem a calcular la suma fent el canvi per $\omega$ d'abans.
+	
+	Notem que si derivem un cop els termes de la sèrie ens resultarà en una sèrie geomètrica que sabrem sumar:	
+	$$S(\omega)= \sum_{n\geq 1} \frac{\omega^{n}}{n}$$
+	$$S'(\omega)= \sum_{n\geq 1} \omega^{n-1}$$
+	
+	Fent servir la fòrmula de la suma geomètrica, trobem que $S'(\omega)=\frac{1}{1-\omega}$.
+	
+	Ara usant el teorema fomental del càlcul tornem enrere per trobar $S(\omega)$:	
+	$$S(\omega)-S(0) = \int_{0}^{\omega}S'(\omega)d\omega$$
+	$$S(\omega)-0 = \int_{0}^{\omega}\frac{1}{1-\omega}d\omega = -\log(1-\omega)$$
+	
+	És a dir que la suma en $z$ dóna:	
+	$$S(z) = -\log(1-4z+2) = -\log(3-4z)$$
+	
+	\end{framed}
+	
+	\item Sigui $l(z)$ la determinació del logaritme en $\mathbb{C}\backslash (-\infty,0]$ tal que $l(1)=-2\pi i$. Definim $f(z)=-l(3-4z)$. 
+	Digueu on és holomorfa la funció $f$. Calculeu el valor de $f(-3i/4)$
+	
+	\begin{framed}
+	
+	El logaritme per enunciat és holomorfa a $\mathbb{C}\backslash (-\infty,0]$ (ja que és on és contínua i holomorfa).
+	
+	La funció $f$ és holomorfa si i només si l'és $-f=l(3-4z)$. Hem de veure llavors per quins $z\in\mathbb{C}$ $3-4z\in(-\infty,0]$.
+	
+	Observem primer, que $z$ ha de ser real per a què això passi. Llavors:
+	$$3-4z\leq 0 \implies \frac{3}{4}\leq z$$
+	
+	Llavors $f$ és holomorfa a $\mathbb{C}\backslash [\frac{3}{4},\infty)$.
+	
+	Per calcular el valor de $f(-3i/4)$ farem servir la determinació del logaritme de l'enunciat. Notem que $l(1)$ és justament el desplaçament de l'argument que ens acaba determinant el logaritme. (És a dir que la part de $2k\pi$, $k\in\mathbb{Z}$ de la fórmula del logaritme és exactament $l(1)$):	
+	$$f(-3i/4) = -l(3+3i) = -(\ln(|3+3i|) + \arg(3+3i)i + l(1)) = $$ 
+	$$ = -\left(\frac{1}{2}\ln(18) + \left(\frac{\pi}{4}\right)i - 2\pi i\right) =$$
+	$$ = -\frac{1}{2}\ln(18) + \frac{7\pi}{4}i $$	
+	
+	\end{framed}	
+	\item Quina relació hi ha entre $S(z)$ i $f(z)$?
+	
+	\begin{framed}
+	
+	La relació entre ells és que ambdós són logaritmes composats amb $3-4z$, però $S(z)$ és amb l'argument principal i $f(z)$ és amb un desplaçament de $-2\pi i$.
+	
+	\end{framed}
+	\end{enumerate}
+	
+\end{enumerate}
+
+\end{document}
